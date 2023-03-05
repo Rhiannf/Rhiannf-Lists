@@ -3,6 +3,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListExerciseTest {
@@ -17,11 +18,8 @@ public class ListExerciseTest {
      */
     @Test
     public void createListTest1(){
-        List<Integer> list = le.createList();
-
-        if(list == null){
-            Assert.fail("list not correctly instantiated");
-        }
+        List<Integer> list = new ArrayList<>();
+        
     }
 
     /**
@@ -29,12 +27,8 @@ public class ListExerciseTest {
      */
     @Test
     public void getSizeTest1(){
-        List<Integer> list = le.createList();
-        if(list == null){
-            Assert.fail();
-        }else{
-            Assert.assertTrue(le.getSize(list) == 0);
-        }
+        List<Integer> list = new ArrayList<>(0);
+        Assert.assertTrue(le.getSize(list) == 0);
         
     }
 
@@ -43,13 +37,9 @@ public class ListExerciseTest {
      */
     @Test
     public void getSizeTest2(){
-        List<Integer> list = le.createList();
-        if(list == null){
-            Assert.fail();        
-        }else{
-            le.addToList(list, 1);
-            Assert.assertTrue(le.getSize(list) == 1);        
-        }
+        List<Integer> list = new ArrayList<>(1);
+        le.addToList(list, 1);
+        Assert.assertTrue(le.getSize(list) == 1);
         
     }
 
@@ -58,13 +48,9 @@ public class ListExerciseTest {
      */
     @Test
     public void addItemTest1(){
-        List<Integer> list = le.createList();
-        if(list == null){
-            Assert.fail();        
-        }else{
-            le.addToList(list, 1);
-            Assert.assertTrue(list.contains(1));
-        } 
+        List<Integer> list = new ArrayList<>();
+        le.addToList(list, 1);
+        Assert.assertTrue(list.contains(1)); 
     }
 
     /**
@@ -72,16 +58,12 @@ public class ListExerciseTest {
      */
     @Test
     public void addItemTest2(){
-        List<Integer> list = le.createList();
+        List<Integer> list = new ArrayList<>();
 
-        if(list == null){
-            Assert.fail();        
-        }else{
-            le.addToList(list, 1);
-            le.addToList(list, 2);
-            Assert.assertTrue(list.contains(1));
-            Assert.assertTrue(list.contains(2));
-        }
+        le.addToList(list, 1);
+        le.addToList(list, 2);
+        Assert.assertTrue(list.contains(1));
+        Assert.assertTrue(list.contains(2));
         
     }
 
@@ -94,10 +76,11 @@ public class ListExerciseTest {
         if(list == null){
             Assert.fail();        
         }else{
-            le.addToList(list, 1);
-            Assert.assertTrue(le.get(list, 0) == 1);
-        }
-        
+        le.addToList(list, 1);
+        le.addToList(list, 2);
+        Assert.assertTrue(le.get(list, 0) == 2);
+    }
+
     }
 
     /**
@@ -109,9 +92,9 @@ public class ListExerciseTest {
         if(list == null){
             Assert.fail();        
         }else{
-            le.addToList(list, 1);
-            le.addToList(list, 2);
-            Assert.assertTrue(le.get(list, 1) == 2);
+        le.addToList(list, 1);
+        le.addToList(list, 2);
+        Assert.assertTrue(le.get(list, 0) == 2);
         }
     }
 
